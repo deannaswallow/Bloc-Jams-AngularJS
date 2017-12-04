@@ -1,7 +1,7 @@
 <main class="album-view container narrow">
   <section class="clearfix">
     <div class="column half">
-      <img src="{{album.albumArtUrl}}" class="album-cover-art">
+      <img src="{{album.albumData.albumArtUrl}}" class="album-cover-art">
     </div>
     <div class="album-view-details column half">
       <h2 class="album-view-title">{{album.albumData.title}}</h2>
@@ -13,7 +13,7 @@
     <tr class="album-view-song-item" ng-repeat="song in album.albumData.songs" ng-mouseover="hovered = true" ng-mouseleave="hovered = false">
       <td class="song-item-number">
         <span ng-show="!playing && !hovered">{{$index + 1}}</span>
-        <a class="album-song-button" ng-show="!playing && hovered"><span class="ion-play"></span></a>
+        <a class="album-song-button" ng-show="!playing && hovered" ng-click="album.songPlayer.play(song)"><span class="ion-play"></span></a>
         <a class="album-song-button" ng-show="playing"><span class="ion-pause"></span></a>
       </td>
       <td class="song-item-title">{{song.title}}</td>
